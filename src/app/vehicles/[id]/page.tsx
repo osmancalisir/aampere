@@ -12,7 +12,6 @@ import {
   Button,
   IconButton,
   Card,
-  CardMedia,
   CardContent,
   Chip,
   Box,
@@ -24,6 +23,7 @@ import {
 } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import DeleteIcon from "@mui/icons-material/Delete";
+import ImageCarousel from "@/components/ImageCarousel";
 
 const GET_VEHICLE = gql`
   query GetVehicle($id: ID!) {
@@ -72,7 +72,6 @@ export default function VehicleDetail() {
   });
 
   const [showConfirmation, setShowConfirmation] = useState(false);
-  const [activeImage, setActiveImage] = useState(0);
 
   if (loading)
     return (
@@ -121,33 +120,8 @@ export default function VehicleDetail() {
 
       <Grid container spacing={4} mt={2}>
         <Grid size={{ xs: 12, md: 8 }}>
-          <Card>
-            <CardMedia
-              component="img"
-              height="500"
-              image={vehicle.images[activeImage]}
-              alt={`${vehicle.brand} ${vehicle.model}`}
-              sx={{ objectFit: "contain" }}
-            />
-          </Card>
-          <Box sx={{ display: "flex", gap: 2, mt: 2, overflowX: "auto" }}>
-            {vehicle.images.map((img: string, i: number) => (
-              <Card
-                key={i}
-                sx={{
-                  minWidth: 100,
-                  border: activeImage === i ? "2px solid #1976d2" : "none",
-                  cursor: "pointer",
-                  flexShrink: 0,
-                }}
-                onClick={() => setActiveImage(i)}
-              >
-                <CardMedia component="img" height="80" image={img} alt={`View ${i + 1}`} />
-              </Card>
-            ))}
-          </Box>
+          <ImageCarousel images={vehicle.images} />
         </Grid>
-
         <Grid size={{ xs: 12, md: 4 }}>
           <Box sx={{ display: "flex", justifyContent: "space-between", mb: 3 }}>
             <Box>
@@ -176,7 +150,16 @@ export default function VehicleDetail() {
               </Button>
             </CardContent>
           </Card>
-
+          {vehicle.accidents && (
+            <Card sx={{ mt: 3, mb: 3, bgcolor: "error.light", borderColor: "error.main" }}>
+              <CardContent>
+                <Typography variant="subtitle1" color="white" gutterBottom>
+                  Accident History
+                </Typography>
+                <Typography variant="body2">{vehicle.accident_description}</Typography>
+              </CardContent>
+            </Card>
+          )}
           <Typography variant="h6" gutterBottom>
             Specifications
           </Typography>
@@ -194,17 +177,6 @@ export default function VehicleDetail() {
               </Grid>
             ))}
           </Grid>
-
-          {vehicle.accidents && (
-            <Card sx={{ mt: 3, bgcolor: "error.light", borderColor: "error.main" }}>
-              <CardContent>
-                <Typography variant="subtitle1" color="error.main" gutterBottom>
-                  Accident History
-                </Typography>
-                <Typography variant="body2">{vehicle.accident_description}</Typography>
-              </CardContent>
-            </Card>
-          )}
         </Grid>
       </Grid>
 

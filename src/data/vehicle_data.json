@@ -1,5 +1,5 @@
 {
-  "count": 49,
+  "count": 48,
   "data": [
     {
       "brand": "Tesla",
@@ -1910,28 +1910,6 @@
         "https://ev-database.org/img/auto/Porsche_Taycan/Porsche_Taycan-11@2x.jpg"
       ],
       "id": "tesla-model-s-plaid-2021-1c6841b7"
-    },
-    {
-      "brand": "Porsche",
-      "model": "911",
-      "year": 2025,
-      "price": 120000,
-      "range_km": 1200,
-      "color": "White",
-      "condition": "New",
-      "battery_capacity_kWh": 0,
-      "charging_speed_kW": 0,
-      "seats": 2,
-      "drivetrain": "RWD",
-      "location": "Starnberg",
-      "autopilot": false,
-      "kilometer_count": 0,
-      "accidents": true,
-      "accident_description": "Accident history will be here!",
-      "images": [
-        "https://images-porsche.imgix.net/-/media/0B3F90A75B0141FF8BED694C3C1A323B_7C02423B08CB49C8801E208B2D16A51E_CZ25W18OX0004-911-gt3-white-side?w=2560&h=1440&q=45&crop=faces%2Centropy%2Cedges&auto=format"
-      ],
-      "id": "porsche-911-2025-61724ddf"
     }
   ]
 }

@@ -68,6 +68,19 @@ export default function VehicleDetail() {
 
   const [removeVehicle] = useMutation(REMOVE_VEHICLE, {
     variables: { id },
+    update: (cache) => {
+      cache.evict({ id: `Vehicle:${id}` });
+
+      cache.modify({
+        fields: {
+          vehicles(existingVehiclesRefs = [], { readField }) {
+            return existingVehiclesRefs.filter((vehicleRef: any) => id !== readField("id", vehicleRef));
+          },
+        },
+      });
+
+      cache.gc();
+    },
     onCompleted: () => router.push("/"),
   });
 

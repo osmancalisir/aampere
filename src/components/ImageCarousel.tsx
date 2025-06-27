@@ -35,7 +35,6 @@ export default function ImageCarousel({ images }: { images: string[] }) {
 
   return (
     <Box sx={{ position: "relative" }}>
-      {/* Main Image */}
       <Card sx={{ mb: 2, borderRadius: 2, overflow: "hidden" }}>
         <CardMedia
           component="img"

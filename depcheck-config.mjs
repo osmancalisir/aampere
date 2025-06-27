@@ -1,16 +1,11 @@
-import depcheck from 'depcheck';
+// depcheck-config.mjs
+
+import depcheck from "depcheck";
 
 const options = {
-  ignoreDirs: ['dist', 'build'],
+  ignoreDirs: ["dist", "build"],
 
-  ignoreMatches: [
-    '@types/*',
-    '@testing-library/*',
-    'dotenv',
-    'path',
-    "jest-environment-jsdom",
-    'tsx'
-  ],
+  ignoreMatches: ["@types/*", "@testing-library/*", "dotenv", "path", "jest-environment-jsdom", "tsx"],
 
   specials: [
     depcheck.special.eslint,
@@ -23,10 +18,10 @@ const options = {
 
 depcheck(process.cwd(), options)
   .then((unused) => {
-    console.log('Unused dependencies:', unused.dependencies);
-    console.log('Unused devDependencies:', unused.devDependencies);
-    console.log('Missing dependencies:', unused.missing);
+    console.log("Unused dependencies:", unused.dependencies);
+    console.log("Unused devDependencies:", unused.devDependencies);
+    console.log("Missing dependencies:", unused.missing);
   })
   .catch((error) => {
-    console.error('Error running depcheck:', error);
+    console.error("Error running depcheck:", error);
   });

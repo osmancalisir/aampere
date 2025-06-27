@@ -14,7 +14,6 @@ A Next.js-based vehicle marketplace with listings, search, filtering, and adding
 - Styling: Tailwind CSS, Material UI
 - State Management: Apollo Client
 - Data Layer: GraphQL API with local JSON storage
-- Testing: Jest, React Testing Library
 - Linting: ESLint, Prettier
 
 ## Getting Started
@@ -34,11 +33,6 @@ Visit `http://localhost:3000`
 ### Build for Production
 ```bash
 yarn build
-```
-
-### Testing
-```bash
-yarn test
 ```
 
 ### Linting
